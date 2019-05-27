@@ -1,0 +1,100 @@
+<div class="container mt-lg-5">
+  <div class="row">
+
+    <div class="col">
+
+      <h4>User accounts:</h4>
+
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Login</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Second Name</th>
+          <th scope="col">Role</th>
+          <th scope="col">Info</th>
+          <th scope="col">Delete Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{user.login}}</td>
+          <td>{{user.firstName}}</td>
+          <td>{{user.secondName}}</td>
+          <td>{{user.role.roleName}}</td>
+          <!--<td *ngFor="let customer of customers">{{customer.secondName}}</td>-->
+          <!--<td *ngFor="let customer of customers">{{customer.userID}}</td>-->
+          <td><button type="button" class="btn btn-danger" (click)="openModal(template, user)">Info</button> </td>
+          <td><button type="button" class="btn btn-danger" (click)="_deleteUser(user.id)">Delete</button></td>
+        </tr>
+
+        </tbody>
+      </table>
+      <div>
+        <p>User count: {{users ? users.length : 0}}</p>
+      </div>
+
+      <!--<div>-->
+        <!--<p>Billing Accounts count: {{billingAccounts ? billingAccounts.length : 0}}</p>-->
+      <!--</div>-->
+
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="row">-->
+    <!--<div class="col">-->
+      <!--<button type="button" class="btn btn-dark" (click)="_updateBillingAccounts()">Update</button>-->
+
+    <!--</div>-->
+    <!--<div class="col">-->
+      <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"-->
+              <!--(click)="_openModal(template)">-->
+        <!--Create new billing account-->
+      <!--</button>-->
+    <!--</div>-->
+  <!--</div>-->
+
+<!--</div>-->
+
+
+<!--<!- -->
+      <ng-template #template>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Information</h4>
+          <button type="button" class="close pull-right"
+                  aria-label="Close" (click)="modalService.closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <table class="table">
+              <thead class="thead-dark">
+              <tr>
+                <th scope="col">Service Name</th>
+                <th scope="col">Service Description</th>
+                <th scope="col">Service Price</th>
+              </tr>
+              <tr *ngFor="let serv of selectedUser.servs">
+                <td scope="row">{{serv.serviceName}}</td>
+                <td>{{serv.serviceDescription}}</td>
+                <td>{{serv.price}}</td>
+              </tr>
+              </thead>
+            </table>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" (click)="createService(serviceName, serviceDescription, price)">Create
+          </button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalService.closeModal()">Close</button>
+
+        </div>
+      </ng-template>
+
+
+
+
+
+
+

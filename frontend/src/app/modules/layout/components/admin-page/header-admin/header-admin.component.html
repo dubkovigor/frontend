@@ -1,0 +1,10 @@
+<header>
+  <div id="logo">
+    <span routerLink="">ACTIVE</span>
+  </div>
+
+  <div id="about">
+    <a *ngIf="isRole()" routerLink="" routerLinkActive="myActive" title="Сервисы">Гланая</a>
+    <a *ngIf="isRole()" (click)="outFromAccount()" >Выйти</a>
+  </div>
+</header>
